@@ -1,0 +1,29 @@
+class Vehicle {
+    Vehicle() {
+        System.out.println("Vehicle constructor called");
+    }
+
+    void vehicleType() {
+        System.out.println("This is a vehicle");
+    }
+}
+
+class Car extends Vehicle {
+    final String type = "Car";
+
+    Car() {
+        super(); // calls Vehicle constructor
+        System.out.println("Car constructor called");
+    }
+
+    @Override
+    void vehicleType() {
+        super.vehicleType(); // call parent version
+        System.out.println("This is a " + type);
+    }
+
+    public static void main(String[] args) {
+        Car c = new Car();
+        c.vehicleType();
+    }
+}
