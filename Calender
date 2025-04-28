@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class SimpleCalendar {
+    public static void printMonth(int month, int year) {
+        int[] daysInMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+            daysInMonth[1] = 29; // Leap year adjustment
+        }
+
+        String[] months = {
+                "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+        };
+
+        System.out.println(" " + months[month - 1] + " " + year);
+        System.out.println("Su Mo Tu We Th Fr Sa");
+
+        int firstDay = (month + year + (year / 4) - (year / 100) + (year / 400)) % 7;
+        int daysInThisMonth = daysInMonth[month - 1];
+
+        for (int i = 0; i < firstDay; i++) {
+            System.out.print("   ");
+        }
+
+        for (int i = 1; i <= daysInThisMonth; i++) {
+            System.out.printf("%2d ", i);
+            if ((firstDay + i) % 7 == 0) {
+                System.out.println();
+            }
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter month (1-12): ");
+        int month = sc.nextInt();
+        System.out.print("Enter year: ");
+        int year = sc.nextInt();
+
+        printMonth(month, year);
+    }
+}
