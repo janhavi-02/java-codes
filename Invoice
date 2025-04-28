@@ -1,0 +1,27 @@
+class Invoice {
+    String partNumber, description;
+    int quantity;
+    double pricePerItem;
+
+    Invoice(String partNumber, String description, int quantity, double pricePerItem) {
+        this.partNumber = partNumber;
+        this.description = description;
+        this.quantity = (quantity > 0) ? quantity : 0;
+        this.pricePerItem = (pricePerItem > 0) ? pricePerItem : 0.0;
+    }
+
+    double getInvoiceAmount() {
+        return quantity * pricePerItem;
+    }
+
+    void display() {
+        System.out.println("Part#: " + partNumber + ", Description: " + description);
+        System.out.println("Qty: " + quantity + ", Price: " + pricePerItem);
+        System.out.println("Total: " + getInvoiceAmount());
+    }
+
+    public static void main(String[] args) {
+        Invoice i = new Invoice("P101", "USB Cable", 3, 150);
+        i.display();
+    }
+}
