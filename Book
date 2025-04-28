@@ -1,0 +1,24 @@
+class Book {
+    String title, author;
+
+    Book() {
+        title = "Unknown";
+        author = "Unknown";
+    }
+
+    Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+
+    void display() {
+        System.out.println("Title: " + title + ", Author: " + author);
+    }
+
+    public static void main(String[] args) {
+        Book b1 = new Book("Atomic Habits", "James Clear");
+        Book b2 = new Book();
+        b1.display();
+        b2.display();
+    }
+}
