@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class VotingSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int votesA = 0, votesB = 0;
+
+        System.out.println("Enter number of voters: ");
+        int voters = sc.nextInt();
+
+        for (int i = 0; i < voters; i++) {
+            System.out.println("Vote for candidate A or B: ");
+            char vote = sc.next().charAt(0);
+            if (vote == 'A' || vote == 'a') {
+                votesA++;
+            } else if (vote == 'B' || vote == 'b') {
+                votesB++;
+            }
+        }
+
+        System.out.println("Votes for A: " + votesA);
+        System.out.println("Votes for B: " + votesB);
+
+        if (votesA > votesB) {
+            System.out.println("Candidate A wins!");
+        } else if (votesB > votesA) {
+            System.out.println("Candidate B wins!");
+        } else {
+            System.out.println("It's a tie!");
+        }
+    }
+}
