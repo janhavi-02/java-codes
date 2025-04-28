@@ -1,0 +1,42 @@
+class BankAccount {
+    protected double balance;
+
+    BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    void withdraw(double amount) {
+        balance -= amount;
+    }
+
+    void displayBalance() {
+        System.out.println("Balance: " + balance);
+    }
+}
+
+class SavingsAccount extends BankAccount {
+    SavingsAccount(double balance) {
+        super(balance);
+    }
+
+    @Override
+    void withdraw(double amount) {
+        if (balance - amount < 100) {
+            System.out.println("Withdrawal denied. Balance can't fall below 100.");
+        } else {
+            super.withdraw(amount);
+        }
+    }
+
+    public static void main(String[] args) {
+        SavingsAccount sa = new SavingsAccount(500);
+        sa.withdraw(450);
+        sa.displayBalance();
+        sa.withdraw(300);
+        sa.displayBalance();
+    }
+}
